@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2024/02/23 14:43:21.000.529,=C:\Users\gomes\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2024/02/28 15:24:27.000.554,=C:\Users\gomes\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2024/02/28 16:09:34.000.392,C:\Users\gomes\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit1.dfm=C:\Users\gomes\Desktop\Stephanie\ESTUDOS\DELPHI\GerenciadorEstacionamento\formPrincipal.dfm</Transaction>
+    <Transaction>2024/02/28 16:09:34.000.392,C:\Users\gomes\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit1.pas=C:\Users\gomes\Desktop\Stephanie\ESTUDOS\DELPHI\GerenciadorEstacionamento\formPrincipal.pas</Transaction>
+    <Transaction>2024/02/28 16:09:45.000.311,C:\Users\gomes\OneDrive\Documentos\Embarcadero\Studio\Projects\Project1.dproj=C:\Users\gomes\Desktop\Stephanie\ESTUDOS\DELPHI\GerenciadorEstacionamento\Gerenciador_Estacionamento.dproj</Transaction>
+    <Transaction>2024/02/28 21:15:30.000.110,=C:\Users\gomes\Desktop\Stephanie\ESTUDOS\DELPHI\GerenciadorEstacionamento\Unit2.pas</Transaction>
+    <Transaction>2024/02/28 21:56:31.000.625,C:\Users\gomes\Desktop\Stephanie\ESTUDOS\DELPHI\GerenciadorEstacionamento\estacionar.pas=C:\Users\gomes\Desktop\Stephanie\ESTUDOS\DELPHI\GerenciadorEstacionamento\Unit2.pas</Transaction>
+    <Transaction>2024/02/28 21:56:31.000.625,C:\Users\gomes\Desktop\Stephanie\ESTUDOS\DELPHI\GerenciadorEstacionamento\estacionar.dfm=C:\Users\gomes\Desktop\Stephanie\ESTUDOS\DELPHI\GerenciadorEstacionamento\Unit2.dfm</Transaction>
+    <Transaction>2024/03/03 18:14:15.000.905,=C:\Users\gomes\Desktop\Stephanie\ESTUDOS\DELPHI\GerenciadorEstacionamento\Unit3.pas</Transaction>
+    <Transaction>2024/03/03 18:14:30.000.653,C:\Users\gomes\Desktop\Stephanie\ESTUDOS\DELPHI\GerenciadorEstacionamento\Unit3.pas=C:\Users\gomes\Desktop\Stephanie\ESTUDOS\DELPHI\GerenciadorEstacionamento\pagarEstacionamento.pas</Transaction>
+    <Transaction>2024/03/03 18:14:30.000.653,C:\Users\gomes\Desktop\Stephanie\ESTUDOS\DELPHI\GerenciadorEstacionamento\Unit3.dfm=C:\Users\gomes\Desktop\Stephanie\ESTUDOS\DELPHI\GerenciadorEstacionamento\pagarEstacionamento.dfm</Transaction>
+  </Transactions>
+</BorlandProject>

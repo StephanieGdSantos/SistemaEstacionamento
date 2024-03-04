@@ -1,0 +1,61 @@
+unit estacionar;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.Buttons;
+
+type
+  TForm2 = class(TForm)
+    Panel1: TPanel;
+    Panel2: TPanel;
+    pnlHorario: TPanel;
+    pnlTaxa: TPanel;
+    Label1: TLabel;
+    lblVaga: TLabel;
+    Label3: TLabel;
+    Panel3: TPanel;
+    lblToken: TLabel;
+    SpeedButton1: TSpeedButton;
+    Panel4: TPanel;
+    procedure FormShow(Sender: TObject);
+  private
+    { Private declarations }
+  public
+  function GerarToken(const Tamanho: Integer): string;
+    { Public declarations }
+  end;
+
+var
+  Form2: TForm2;
+
+implementation
+
+{$R *.dfm}
+
+procedure TForm2.FormShow(Sender: TObject);
+var
+  Taxa: Integer;
+begin
+  Taxa := 15;
+  lblToken.Caption := GerarToken(6);
+  pnlTaxa.Caption := 'Taxa: R$' + Taxa.ToString;
+  pnlHorario.Caption := DateTimeToStr(Now);
+end;
+
+function TForm2.GerarToken(const Tamanho: Integer): string;
+const
+  CharSet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+var
+  i: Integer;
+  Resultado: String;
+begin
+  Resultado := '';
+  Randomize;
+  for i := 1 to Tamanho do Resultado := Resultado + CharSet[Random(60)];
+
+  Result := Resultado;
+end;
+
+end.
