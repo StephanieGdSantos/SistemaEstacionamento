@@ -19,7 +19,7 @@ object Form1: TForm1
   TextHeight = 15
   object Estacionamento: TImage
     Left = 48
-    Top = 72
+    Top = 66
     Width = 673
     Height = 321
     Center = True
@@ -383,7 +383,7 @@ object Form1: TForm1
   end
   object A1: TImage
     Left = 70
-    Top = 99
+    Top = 93
     Width = 153
     Height = 63
     Picture.Data = {
@@ -401,7 +401,7 @@ object Form1: TForm1
   end
   object A2: TImage
     Left = 70
-    Top = 169
+    Top = 163
     Width = 153
     Height = 63
     Picture.Data = {
@@ -419,7 +419,7 @@ object Form1: TForm1
   end
   object A3: TImage
     Left = 70
-    Top = 237
+    Top = 231
     Width = 153
     Height = 63
     Picture.Data = {
@@ -437,7 +437,7 @@ object Form1: TForm1
   end
   object A4: TImage
     Left = 70
-    Top = 307
+    Top = 301
     Width = 153
     Height = 63
     Picture.Data = {
@@ -455,7 +455,7 @@ object Form1: TForm1
   end
   object B1: TImage
     Left = 557
-    Top = 99
+    Top = 93
     Width = 153
     Height = 63
     Picture.Data = {
@@ -473,7 +473,7 @@ object Form1: TForm1
   end
   object B2: TImage
     Left = 557
-    Top = 168
+    Top = 162
     Width = 153
     Height = 63
     Picture.Data = {
@@ -491,7 +491,7 @@ object Form1: TForm1
   end
   object B3: TImage
     Left = 557
-    Top = 237
+    Top = 231
     Width = 153
     Height = 63
     Picture.Data = {
@@ -509,7 +509,7 @@ object Form1: TForm1
   end
   object B4: TImage
     Left = 557
-    Top = 306
+    Top = 300
     Width = 153
     Height = 63
     Picture.Data = {

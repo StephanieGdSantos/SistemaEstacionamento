@@ -79,6 +79,7 @@ begin
   FrmEstacionar.lblVaga.Caption := vaga;
 
   FrmPagar := TForm3.Create(Application);
+  FrmPagar.lblVaga.Caption := vaga;
 
   try
 
@@ -91,13 +92,15 @@ begin
         begin
           RespModal := FrmEstacionar.ShowModal();
 
-          if RespModal = mrOK then
-            MudarCor();
-          end;
+          if RespModal = mrOK then MudarCor();
+        end;
       end
       else if FVagas[j].disponibilidade = False then
       begin
         RespPgto := FrmPagar.ShowModal();
+
+//        if RespPgto < then MudarCor();
+
       end;
         Break;
       end;
@@ -105,6 +108,7 @@ begin
 
   finally
     FrmEstacionar.Free;
+    FrmPagar.Free;
   end;
 end;
 

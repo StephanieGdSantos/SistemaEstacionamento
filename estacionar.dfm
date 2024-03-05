@@ -2,8 +2,8 @@ object Form2: TForm2
   Left = 0
   Top = 0
   Caption = 'Estacionar'
-  ClientHeight = 292
-  ClientWidth = 340
+  ClientHeight = 293
+  ClientWidth = 344
   Color = clBtnFace
   Constraints.MaxHeight = 331
   Constraints.MaxWidth = 356
@@ -21,14 +21,16 @@ object Form2: TForm2
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 340
-    Height = 292
+    Width = 344
+    Height = 293
     Align = alClient
     Padding.Left = 30
     Padding.Top = 30
     Padding.Right = 30
     Padding.Bottom = 30
     TabOrder = 0
+    ExplicitWidth = 340
+    ExplicitHeight = 292
     object btnImprimir: TSpeedButton
       Left = 119
       Top = 224
@@ -51,7 +53,7 @@ object Form2: TForm2
       TabOrder = 0
       ExplicitWidth = 278
       object Label1: TLabel
-        Left = 123
+        Left = 126
         Top = 5
         Width = 28
         Height = 15
@@ -65,7 +67,7 @@ object Form2: TForm2
         ParentFont = False
       end
       object lblVaga: TLabel
-        Left = 124
+        Left = 126
         Top = 18
         Width = 28
         Height = 25
@@ -140,7 +142,7 @@ object Form2: TForm2
       object Label3: TLabel
         Left = 0
         Top = 35
-        Width = 51
+        Width = 282
         Height = 24
         Align = alTop
         Alignment = taCenter
@@ -151,11 +153,12 @@ object Form2: TForm2
         Font.Name = 'Lato'
         Font.Style = []
         ParentFont = False
+        ExplicitWidth = 51
       end
       object lblToken: TLabel
         Left = 0
         Top = 61
-        Width = 125
+        Width = 282
         Height = 33
         Align = alBottom
         Alignment = taCenter
@@ -167,6 +170,7 @@ object Form2: TForm2
         Font.Style = [fsBold]
         ParentFont = False
         Layout = tlCenter
+        ExplicitWidth = 125
       end
     end
   end

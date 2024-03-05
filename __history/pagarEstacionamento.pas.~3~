@@ -1,0 +1,115 @@
+unit pagarEstacionamento;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.Buttons,
+  FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Error, FireDAC.UI.Intf,
+  FireDAC.Phys.Intf, FireDAC.Stan.Def, FireDAC.Stan.Pool, FireDAC.Stan.Async,
+  FireDAC.Phys, FireDAC.VCLUI.Wait, FireDAC.Stan.Param, FireDAC.DatS,
+  FireDAC.DApt.Intf, FireDAC.DApt, Data.DB, FireDAC.Comp.DataSet,
+  FireDAC.Comp.Client, FireDAC.Phys.PGDef, FireDAC.Phys.PG;
+
+type
+  TForm3 = class(TForm)
+    Panel1: TPanel;
+    Panel2: TPanel;
+    Panel3: TPanel;
+    pnlHorario: TPanel;
+    pnlTaxa: TPanel;
+    pnlTotal: TPanel;
+    Label1: TLabel;
+    lblVaga: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+    Label5: TLabel;
+    edtToken: TEdit;
+    btnPagar: TSpeedButton;
+    FDConnection1: TFDConnection;
+    FDQuery1: TFDQuery;
+    FDPhysPgDriverLink1: TFDPhysPgDriverLink;
+    procedure btnPagarClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    function ChecarToken(Vaga, Token: String): Boolean;
+    { Public declarations }
+  end;
+
+var
+  Form3: TForm3;
+
+implementation
+
+{$R *.dfm}
+
+function TForm3.ChecarToken(Vaga, Token: String): Boolean;
+var
+  TokenCorreto: String;
+begin
+
+  try
+    FDConnection1.Connected := True;
+    FDQuery1.Connection := FDConnection1;
+
+    FDQuery1.SQL.Text := 'SELECT token FROM vaga WHERE nome=:nome';
+    FDQuery1.ParamByName('nome').AsString := Vaga;
+    FDQuery1.Open;
+
+    TokenCorreto := FDQuery1.FieldByName('token').AsString;
+
+    if Token = TokenCorreto then
+    begin
+      FDQuery1.SQL.Text := 'UPDATE vaga SET hora_estacionamento=null, token=null, ' +
+      'disponibilidade=True WHERE nome=:nome';
+      FDQuery1.ParamByName('nome').AsString := Vaga;
+      FDQuery1.ExecSQL;
+      Close;
+    end
+    else
+    begin
+      showMessage('Token inválido.');
+      edtToken.Clear;
+    end;
+
+  finally
+
+    FDConnection1.Free;
+    FDQuery1.Free;
+  end;
+
+end;
+
+procedure TForm3.FormShow(Sender: TObject);
+var
+  TempoTotal: ftTimeStamp; //Parei aqui
+  Taxa: Integer;
+  Nome: String;
+  horaEstacionada: TDateTime;
+begin
+  Nome := lblVaga.Caption;
+
+  try
+  FDConnection1.Connected := True;
+  FDQuery1.Connection := FDConnection1;
+
+  FDQuery1.SQL.Text := 'SELECT hora_estacionamento FROM vaga WHERE nome=:nome;';
+  FDQuery1.ParamByName('nome').AsString := Nome;
+  FDQuery1.Open;
+  horaEstacionada := FDQuery1.FieldByName('hora_estacionamento').AsDateTime;
+
+  pnlHorario.Caption := DateToStr(horaEstacionada);
+
+  finally
+
+  end;
+end;
+
+procedure TForm3.btnPagarClick(Sender: TObject);
+begin
+  ChecarToken(lblVaga.Caption, edtToken.Text);
+end;
+
+end.

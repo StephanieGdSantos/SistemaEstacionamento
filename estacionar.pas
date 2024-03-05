@@ -94,6 +94,7 @@ begin
     FDQuery1.ParamByName('disponibilidade').AsString := 'Não';
     FDQuery1.ParamByName('nome').AsString := NomeVaga;
     FDQuery1.ExecSQL;
+    Close;
   finally
     FDConnection1.Free;
     FDQuery1.Free;
