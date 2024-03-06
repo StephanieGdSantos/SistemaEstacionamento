@@ -64,37 +64,39 @@ procedure TForm3.ChecarToken(Vaga, Token: String);
 var
   TokenCorreto: String;
 begin
-
   try
     FDConnection1.Connected := True;
-    FDQuery1.Connection := FDConnection1;
-
     FDQuery1.SQL.Text := 'SELECT token FROM vaga WHERE nome=:nome';
     FDQuery1.ParamByName('nome').AsString := Vaga;
     FDQuery1.Open;
 
-    TokenCorreto := FDQuery1.FieldByName('token').AsString;
-
-    if Token = TokenCorreto then
+    if not FDQuery1.IsEmpty then
     begin
-      FDQuery1.SQL.Text := 'UPDATE vaga SET hora_estacionamento=null, token=null, ' +
-      'disponibilidade=True WHERE nome=:nome';
-      FDQuery1.ParamByName('nome').AsString := Vaga;
-      FDQuery1.ExecSQL;
-      Close;
+      TokenCorreto := FDQuery1.FieldByName('token').AsString;
+
+      if Token = TokenCorreto then
+      begin
+        FDQuery1.Close;
+        FDQuery1.SQL.Text := 'UPDATE vaga SET hora_estacionamento=null, token=null, ' +
+          'disponibilidade=:disponibilidade WHERE nome=:nome';
+        FDQuery1.ParamByName('nome').AsString := Vaga;
+        FDQuery1.ParamByName('disponibilidade').AsString := 'Sim';
+        FDQuery1.ExecSQL;
+        Close;
+      end
+      else
+      begin
+        showMessage('Token inválido.');
+        edtToken.Clear;
+      end;
     end
     else
     begin
-      showMessage('Token inválido.');
-      edtToken.Clear;
+      showMessage('Registro não encontrado para a vaga: ' + Vaga);
     end;
-
   finally
 
-    FDConnection1.Free;
-    FDQuery1.Free;
   end;
-
 end;
 
 procedure TForm3.FormShow(Sender: TObject);
@@ -107,18 +109,22 @@ begin
   Taxa := 15;
 
   try
-  FDConnection1.Connected := True;
-  FDQuery1.Connection := FDConnection1;
+    FDQuery1.SQL.Text := 'SELECT hora_estacionamento FROM vaga WHERE nome=:nome;';
+    FDQuery1.ParamByName('nome').AsString := Nome;
+    FDQuery1.Open;
 
-  FDQuery1.SQL.Text := 'SELECT hora_estacionamento FROM vaga WHERE nome=:nome;';
-  FDQuery1.ParamByName('nome').AsString := Nome;
-  FDQuery1.Open;
-  horaEstacionada := FDQuery1.FieldByName('hora_estacionamento').AsDateTime;
+    if not FDQuery1.IsEmpty then
+    begin
+      horaEstacionada := FDQuery1.FieldByName('hora_estacionamento').AsDateTime;
 
-  pnlHorario.Caption := DateTimeToStr(horaEstacionada);
-  pnlTaxa.Caption := 'Taxa: ' + Taxa.ToString;
-  lblValorFinal.Caption := CalcularValorFinal(horaEstacionada, Taxa);
-
+      pnlHorario.Caption := DateTimeToStr(horaEstacionada);
+      pnlTaxa.Caption := 'Taxa: ' + Taxa.ToString;
+      lblValorFinal.Caption := CalcularValorFinal(horaEstacionada, Taxa);
+    end
+    else
+    begin
+      showMessage('Registro não encontrado para a vaga: ' + Nome);
+    end;
   finally
 
   end;

@@ -98,8 +98,9 @@ begin
       else if FVagas[j].disponibilidade = False then
       begin
         RespPgto := FrmPagar.ShowModal();
+        showMessage(RespPgto.ToString);
 
-//        if RespPgto < then MudarCor();
+        if RespPgto = 2 then MudarCor();
 
       end;
         Break;
@@ -125,6 +126,7 @@ var
   DispVaga,
   NomeVaga: String;
   Vaga: TVaga;
+  k: Integer;
 begin
   Imagens[0] := A1;
   Imagens[1] := A2;
@@ -141,6 +143,8 @@ begin
   FDQuery1.Open;
 
   FDQuery1.First;
+  i := 0;
+  FVagas.Clear;
   while not FDQuery1.Eof do
   begin
     DispVaga := FDQuery1.FieldByName('disponibilidade').AsString;
@@ -151,17 +155,19 @@ begin
     if DispVaga = 'Não' then
     begin
       Vaga.disponibilidade := False;
-      for i := 0 to 7 do
-      begin
         if Imagens[i].Name = NomeVaga then
           Imagens[i].Picture.LoadFromFile('../../BtnVermelho.png');
-      end;
     end
     else
+    begin
       Vaga.disponibilidade := True;
+      Imagens[i].Picture.LoadFromFile('../../disponivel.png');
+    end;
 
     FVagas.Add(Vaga);
+
     FDQuery1.Next;
+    i := i+1;
   end;
 
 end;

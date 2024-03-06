@@ -168,7 +168,6 @@ object Form3: TForm3
         Font.Name = 'Lato'
         Font.Style = []
         ParentFont = False
-        ExplicitLeft = 106
         ExplicitHeight = 15
       end
       object Label4: TLabel
@@ -185,7 +184,6 @@ object Form3: TForm3
         Font.Name = 'Lato'
         Font.Style = []
         ParentFont = False
-        ExplicitLeft = 20
         ExplicitHeight = 15
       end
     end
@@ -212,7 +210,6 @@ object Form3: TForm3
       'Password=BomBom10'
       'Server=localhost'
       'DriverID=PG')
-    Connected = True
     Left = 16
   end
   object FDQuery1: TFDQuery
